@@ -1,0 +1,9 @@
+# Temporary files
+*~
+*.save
+
+# iVerilog executables
+*.out
+
+# GTKWave dumps
+*.vcd
