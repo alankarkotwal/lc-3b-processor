@@ -1,7 +1,6 @@
 module adder16(in1, in2, carry_in, out, carry_out);		// Implements a full 16-bit adder
 	input [15:0] in1, in2;
 	input carry_in;
-	
 	output [15:0] out;
 	output carry_out;
 	
