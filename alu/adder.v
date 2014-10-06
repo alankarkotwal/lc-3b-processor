@@ -2,7 +2,7 @@ module adder16(in1, in2, carry_in, out, carry_out);		// Implements a full 16-bit
 	input  [15:0] in1, in2;
 	input         carry_in;
 	output [15:0] out;
-	output        carry_out;
+	output        carry_out, zero, positive, negative;
 	
 	wire carry0, carry1,  carry2,  carry3,  carry4,  carry5,  carry6,  carry7,
 	     carry8, carry9, carry10, carry11, carry12, carry13, carry14;
@@ -23,6 +23,9 @@ module adder16(in1, in2, carry_in, out, carry_out);		// Implements a full 16-bit
 	adder1 a13(in1[13], in2[13], carry12, out[13], carry13);
 	adder1 a14(in1[14], in2[14], carry13, out[14], carry14);
 	adder1 a15(in1[15], in2[15], carry14, out[15], carry_out);
+	nor n1(zero,out[0],out[1],out[2],out[3],out[4],out[5],out[6],out[7],out[8],out[9],out[10],out[11],out[12],out[13],out[14],out[15]);
+	assign positive = ~out[15];
+	assign negative = out[15];
 endmodule
 
 
@@ -34,9 +37,9 @@ module adder1(in1, in2, carry_in, out, carry_out);
 	
 	wire andInputs, xorInputs, andCin;
 	
-	xor(out, in1, in2);
-	and(andInputs, in1, in2);
-	xor(xorInputs, in1, in2);
-	and(andCin, xorInputs, carry_in);
-	or(carry_out, andInputs, andCin);
+	xor x1(out, in1, in2);
+	and a1(andInputs, in1, in2);
+	xor x2(xorInputs, in1, in2);
+	and a2(andCin, xorInputs, carry_in);
+	or o1(carry_out, andInputs, andCin);
 endmodule
