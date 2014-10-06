@@ -8,19 +8,19 @@
 `include "../reg-file/register.v"
 `include "../misc/mux.v"
 
-module alu(in1, in2, op, shift, out, zero, ovf); // Add more CCR flags, add logic for selecting ovf according to operation. Change shift
+module alu(in1, in2, op, shift, out, zero, positive, negative); // Add more CCR flags, add logic for selecting ovf according to operation. Change shift
 	output [15:0] out;
 	input  [15:0] in1, in2;
 	input  [2:0]  op;
 	input  [3:0]  shift;
-	output        zero, ovf;
+	output        zero, positive,negative;
 	
 	wire   [15:0] outAdd, outAnd, outNot, outXor, outLshf, outRshfl, outRshfa;
-	wire          ovfAdd;
+	
 	
 	mux16x8 m1(outAdd, outAnd, outNot, outXor, outLshf, outRshfl, outRshfa, 16'b0, op, out);
 	
-	adder16 add1(in1, in2, 1'b0, outAdd, ovfAdd);
+	adder16 add1(in1, in2, outAdd, zero,positive,negative);
 	and16   and1(in1, in2, outAnd);
 	not16   not1(in1,  outNot);
 	xor16   xor1(in1, in2, outXor);
