@@ -1,8 +1,8 @@
 module adder16(in1, in2, carry_in, out, carry_out);		// Implements a full 16-bit adder
-	input [15:0] in1, in2;
-	input carry_in;
+	input  [15:0] in1, in2;
+	input         carry_in;
 	output [15:0] out;
-	output carry_out;
+	output        carry_out;
 	
 	wire carry0, carry1,  carry2,  carry3,  carry4,  carry5,  carry6,  carry7,
 	     carry8, carry9, carry10, carry11, carry12, carry13, carry14;
@@ -24,6 +24,7 @@ module adder16(in1, in2, carry_in, out, carry_out);		// Implements a full 16-bit
 	adder1 a14(in1[14], in2[14], carry13, out[14], carry14);
 	adder1 a15(in1[15], in2[15], carry14, out[15], carry_out);
 endmodule
+
 
 module adder1(in1, in2, carry_in, out, carry_out);
 	input in1, in2, carry_in;
