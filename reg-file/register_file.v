@@ -6,6 +6,7 @@
 `include "../misc/demux.v"
 
 module register_file(clk, out1, out2, readAdd1, readAdd2, write, writeAdd, in, reset);
+
 	output [15:0] out1, out2;
 	input  [15:0] in;
 	input  [2:0]  readAdd1, readAdd2, writeAdd;
@@ -35,6 +36,7 @@ module register_file(clk, out1, out2, readAdd1, readAdd2, write, writeAdd, in, r
 	register16 r5(clk, data5, in, writeLines[5], reset);
 	register16 r6(clk, data6, in, writeLines[6], reset);
 	register16 r7(clk, data7, in, writeLines[7], reset);
+	
 endmodule
 
 `endif

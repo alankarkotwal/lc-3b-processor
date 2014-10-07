@@ -2,6 +2,7 @@
 `define _DEMUX
 
 module demux8(selectInput, out);  // 8-output demux
+
 	output reg [7:0] out;
 	input  [2:0] selectInput;
 	
@@ -17,6 +18,7 @@ module demux8(selectInput, out);  // 8-output demux
 			7: out = 16'b10000000;
 		endcase
 	end
+	
 endmodule
 
 `endif

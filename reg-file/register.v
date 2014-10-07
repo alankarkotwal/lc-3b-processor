@@ -2,6 +2,7 @@
 `define _REGISTER
 
 module register16(clk, out, in, write, reset);  // Negedge-triggered flipflop register with active-low write signal and reset
+
 	output reg [15:0] out;
 	input      [15:0] in;
 	input      clk, write, reset;
@@ -14,6 +15,7 @@ module register16(clk, out, in, write, reset);  // Negedge-triggered flipflop re
 			out = in;
 		end
 	end
+	
 endmodule
 
 `endif

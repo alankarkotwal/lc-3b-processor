@@ -1,0 +1,5 @@
+#!/bin/bash
+
+iverilog $1
+./a.out
+gtkwave test.vcd

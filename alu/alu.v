@@ -2,6 +2,7 @@
 `define _ALU
 
 module alu(in1, in2, op, shift, out, zero, positive, negative); 
+	
 	output [15:0] out;
 	input  [15:0] in1, in2;
 	input  [2:0] op;
@@ -20,6 +21,7 @@ module alu(in1, in2, op, shift, out, zero, positive, negative);
 	left_shift lshf1(in1, outLshf, shift);
 	right_shift_logical rshfl1(in1, outRshfl, shift);
 	right_shift_arithmetic rshfa1(in1, outRshfa, shift);
+	
 endmodule
 
 `endif
