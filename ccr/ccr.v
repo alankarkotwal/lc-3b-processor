@@ -16,27 +16,27 @@ module register1b(clk, out, in, write, reset); // Negedge-triggered 1 bit flipfl
 endmodule
 
 module Negative_CCR(clk,out,in,write,reset);
-output reg  out;
-input in;
-input clk, write, reset;
-register1b neg(.clk(clk), .out(out),.in(in),.write(write),.reset(reset));
+	output reg  out;
+	input in;
+	input clk, write, reset;
 
+	register1b neg(.clk(clk), .out(out),.in(in),.write(write),.reset(reset));
 endmodule
 
 module Positive_CCR(clk,out,in,write,reset);
-output reg  out;
-input in;
-input clk, write, reset;
-register1b neg(.clk(clk), .out(out),.in(in),.write(write),.reset(reset));
+	output reg  out;
+	input in;
+	input clk, write, reset;
 
+	register1b neg(.clk(clk), .out(out),.in(in),.write(write),.reset(reset));
 endmodule
 
 module Zero_CCR(clk,out,in,write,reset);
-output reg  out;
-input in;
-input clk, write, reset;
-register1b neg(.clk(clk), .out(out),.in(in),.write(write),.reset(reset));
-
+	output reg  out;
+	input in;
+	input clk, write, reset;
+	
+	register1b neg(.clk(clk), .out(out),.in(in),.write(write),.reset(reset));
 endmodule
 
 `endif
