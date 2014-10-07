@@ -1,5 +1,5 @@
-`include "misc/mux.v"
-`include "misc/demux.v"
+//`include "misc/mux.v"
+//`include "misc/demux.v"
 
 module controller();
 

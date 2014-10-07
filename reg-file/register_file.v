@@ -1,3 +1,6 @@
+`ifndef _REGFILE
+`define _REGFILE
+
 `include "register.v"
 `include "../misc/mux.v"
 `include "../misc/demux.v"
@@ -33,3 +36,5 @@ module register_file(clk, out1, out2, readAdd1, readAdd2, write, writeAdd, in, r
 	register16 r6(clk, data6, in, writeLines[6], reset);
 	register16 r7(clk, data7, in, writeLines[7], reset);
 endmodule
+
+`endif

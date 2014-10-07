@@ -1,3 +1,6 @@
+`ifndef _ADDER
+`define _ADDER
+
 module adder16(in1, in2 , out);		// Implements a full 16-bit adder
 	input  [15:0] in1, in2;
 	output [15:0] out;
@@ -40,3 +43,5 @@ module adder1(in1, in2, carry_in, out, carry_out);
 	and a2(andCin, xorInputs, carry_in);
 	or o1(carry_out, andInputs, andCin);
 endmodule
+
+`endif

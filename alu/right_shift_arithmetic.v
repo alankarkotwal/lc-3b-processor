@@ -1,3 +1,6 @@
+`ifndef _RSHFA
+`define _RSHFA
+
 module right_shift_arithmetic(in, out, shift);
 	output [15:0] out;
 	input  [15:0] in;
@@ -5,3 +8,5 @@ module right_shift_arithmetic(in, out, shift);
 	
 	assign out = (in << shift) | (in >> ~shift);
 endmodule
+
+`endif

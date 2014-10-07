@@ -1,3 +1,6 @@
+`ifndef _MUX
+`define _MUX
+
 module mux16x8(data0, data1, data2, data3, data4, data5, data6, data7, selectInput, out);  // 8-16bit-input mux
 	output reg [15:0] out;
 	input  [15:0] data0, data1, data2, data3, data4, data5, data6, data7;
@@ -16,3 +19,5 @@ module mux16x8(data0, data1, data2, data3, data4, data5, data6, data7, selectInp
 		endcase
 	end
 endmodule
+
+`endif

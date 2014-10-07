@@ -1,3 +1,6 @@
+`ifndef _LSHF
+`define _LSHF
+
 module left_shift(in, out, shift);
 	output [15:0] out;
 	input  [15:0] in;
@@ -5,3 +8,5 @@ module left_shift(in, out, shift);
 	
 	assign out = in << shift;
 endmodule
+
+`endif

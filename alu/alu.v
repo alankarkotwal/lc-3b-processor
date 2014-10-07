@@ -1,3 +1,6 @@
+`ifndef _ALU
+`define _ALU
+
 `include "adder.v"
 `include "not.v"
 `include "xor.v"
@@ -5,7 +8,6 @@
 `include "left_shift.v"
 `include "right_shift_logical.v"
 `include "right_shift_arithmetic.v"
-`include "../reg-file/register.v"
 `include "../misc/mux.v"
 
 module alu(in1, in2, op, shift, out, zero, positive, negative); 
@@ -28,3 +30,5 @@ module alu(in1, in2, op, shift, out, zero, positive, negative);
 	right_shift_logical rshfl1(in1, outRshfl, shift);
 	right_shift_arithmetic rshfa1(in1, outRshfa, shift);
 endmodule
+
+`endif
