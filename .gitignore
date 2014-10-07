@@ -1,6 +1,7 @@
 # Temporary files
 *~
 *.save
+*.bak
 
 # iVerilog executables
 *.out
