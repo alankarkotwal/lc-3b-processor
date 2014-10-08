@@ -21,15 +21,15 @@ module alu_test();
 	alu alu1(in1, in2, op, shift, out, zero, positive, negative);
 
 	initial begin
-		in1 =   16'd15;
+		in1 =   16'd32783;
 		in2 =   16'd37;
-		op  =   3'b0;
-		shift = 4'd13;
+		op  =   3'd6;
+		shift = 4'd5;
 	end
 	
 	initial begin
 		$dumpfile("test.vcd");
-		$dumpvars(1, in1, in2, out, op,	 zero, positive, negative);
+		$dumpvars(1, in1, in2, out, op, shift);
 		#10 $finish;
 	end
 	

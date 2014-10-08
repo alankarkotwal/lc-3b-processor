@@ -1,10 +1,6 @@
 `ifndef _REGFILE
 `define _REGFILE
 
-`include "register.v"
-`include "../misc/mux.v"
-`include "../misc/demux.v"
-
 module register_file(clk, out1, out2, readAdd1, readAdd2, write, writeAdd, in, reset);
 
 	output [15:0] out1, out2;
@@ -16,8 +12,8 @@ module register_file(clk, out1, out2, readAdd1, readAdd2, write, writeAdd, in, r
 	wire   [7:0]  writeLinesInit, writeLines;
 	
 	demux8 dem(writeAdd, writeLinesInit);
-	mux16x4 mux1(data0, data1, data2, data3, data4, data5, data6, data7, readAdd1, out1);
-	mux16x4 mux2(data0, data1, data2, data3, data4, data5, data6, data7, readAdd2, out2);
+	mux16x8 mux1(data0, data1, data2, data3, data4, data5, data6, data7, readAdd1, out1);
+	mux16x8 mux2(data0, data1, data2, data3, data4, data5, data6, data7, readAdd2, out2);
 	
 	or a0(writeLines[0], write, ~writeLinesInit[0]);
 	or a1(writeLines[1], write, ~writeLinesInit[1]);
