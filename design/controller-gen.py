@@ -8,11 +8,11 @@
 # # State number 0 is always reset, state number 1 is always fetch1.
 # # All constant-logic signals are in misc.direc
 
-import math
+import math, os
 
 # Options
 _NEGEDGE =  0
-_XVAL = '0'
+_XVAL = 1
 
 # Open all necessary files
 statefile = open('states.csv', 'r')
@@ -77,9 +77,9 @@ outfile.write ("\tinput  [15:0] IR;\n\tinput  clk, N, Z, P;\n");
 # Specify outputs from controls file
 for i in range(len(controlSignals)):
 	if controlSignalLengths[i]!=0:
-		outfile.write("\toutput ["+str(controlSignalLengths[i])+":0] "+controlSignals[i]+";\n")
+		outfile.write("\toutput reg ["+str(controlSignalLengths[i])+":0] "+controlSignals[i]+";\n")
 	else:
-		outfile.write("\toutput "+controlSignals[i]+";\n")
+		outfile.write("\toutput reg "+controlSignals[i]+";\n")
 
 # Assign constant signals
 outfile.write("\n")
@@ -93,7 +93,7 @@ else:
 	outfile.write("\n\talways@(posedge clk) begin\n")
 
 # Start switch-case
-outfile.write("\t\tcase("+controls[0][1]+") begin\n")
+outfile.write("\t\tcase("+controls[0][1]+")\n")
 
 for state in range(1, len(controls)):
 	outfile.write("\t\t\t"+str(state)+": begin\n")
@@ -102,17 +102,24 @@ for state in range(1, len(controls)):
 		outfile.write("\t\t\t\t"+controlSignals[controlSignal]+" = "+str(controlSignalLengths[controlSignal]+1)+"'b")
 		signalNoHere = controlSignalLengths[controlSignal]
 		while signalNoHere>=0:
-			if(controls[state][signalNo]!='x'):
+			if controls[state][signalNo]=='1' or controls[state][signalNo]=='0':
 				outfile.write(controls[state][signalNo])
+			elif controls[state][signalNo]=='x':
+				outfile.write(str(_XVAL))
 			else:
-				outfile.write(_XVAL)
+				if signalNoHere == controlSignalLengths[controlSignal]:
+					outfile.seek(-3, os.SEEK_END)
+					outfile.truncate()
+					outfile.write("{"+controls[state][signalNo]+", ")
+				elif signalNoHere == 0:
+					outfile.write(controls[state][signalNo]+"}")
 			signalNo = signalNo+1
 			signalNoHere = signalNoHere-1
-		outfile.write("\n")
+		outfile.write(";\n")
 	
 	# Calculate next state here.
 	nextState = 0
-	outfile.write("\t\t\t\tstate = "+str(nextState)+"\n")
+	outfile.write("\t\t\t\tStateID = "+str(nextState)+";\n")
 	outfile.write("\t\t\tend\n")
 
 outfile.write("\t\tendcase\n")
