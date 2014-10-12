@@ -1,0 +1,1 @@
+module controller(clk, IR, N, Z, P, StateID, Mux1, Mux2, Mux3, Mux4, Mux5, Mux6, Mux7, Mux8, Mux9, Mux10, Mux11, Mux12, wrf, wpc, wir, lccr, aluop, alushop, rm/wmb, lalu, ltempdr);		// Implements the designed controller for LC-3b.
