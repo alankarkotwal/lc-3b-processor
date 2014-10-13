@@ -36,6 +36,10 @@ module controller_test();
 	end
 	
 	always begin
+		#43 IR = 16'b1100000000000000;
+	end
+	
+	always begin
 		#5 clk=~clk;
 	end
 
