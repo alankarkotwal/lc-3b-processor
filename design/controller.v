@@ -2,7 +2,7 @@ module controller(clk, IR, N, Z, P, StateID, Mux1, Mux2, Mux3, Mux4, Mux5, Mux6,
 
 	input  [15:0] IR;
 	input  clk, N, Z, P;
-	output reg [4:0] StateID;
+	output reg [3:0] StateID;
 	output reg Mux1;
 	output reg [1:0] Mux2;
 	output reg [2:0] Mux3;
@@ -350,78 +350,7 @@ module controller(clk, IR, N, Z, P, StateID, Mux1, Mux2, Mux3, Mux4, Mux5, Mux6,
 				alushop = 2'b11;
 				wmem = 1'b1;
 			end
-			default: begin
-				Mux1 = 1'b0;
-				Mux2 = 2'b00;
-				Mux3 = 3'b000;
-				Mux4 = 2'b00;
-				Mux5 = 2'b00;
-				Mux6 = 2'b00;
-				Mux7 = 2'b00;
-				Mux11 = 1'b0;
-				Mux12 = 1'b0;
-				wrf = 1'b0;
-				wpc = 1'b0;
-				wir = 1'b0;
-				lccr = 1'b0;
-				aluop = 2'b00;
-				alushop = 2'b00;
-				wmem = 1'b0;
-				
-				StateID = 1;
-			end
 		endcase
-	end
-	
-	always@(posedge clk) begin
-		case(StateID)
-			1: begin
-				case(IR[15:12])
-					0:  StateID=5;
-					4:  StateID=7;
-					3:  StateID=15;
-					7:  StateID=15;
-					default: StateID=2;
-				endcase
-			end
-			2: begin
-				case(IR[15:12])
-					12: StateID=6;
-					2:  StateID=9;
-					6:  StateID=12;
-					4:  StateID=8;
-					14: StateID=13;
-					default: StateID=3;
-				endcase
-			end
-			3:  StateID=4;
-			4:  StateID=1;
-			5:  StateID=1;
-			6:  StateID=1;
-			7:  StateID=2;
-			8:  StateID=1;
-			9:  StateID=10;
-			10: StateID=11;
-			11: StateID=1;
-			12: StateID=10;
-			13: StateID=14;
-			14: StateID=1;
-			15: begin
-				case(IR[15:12])
-					3:  StateID = 16;
-					7:  StateID = 18;
-					default: StateID=1;
-				endcase
-			end
-			16: StateID=17;
-			17: StateID=1;
-			18: StateID=17;
-			default: StateID=1;
-		endcase
-	end
-	
-	initial begin
-		StateID = 1;
 	end
 
 endmodule
