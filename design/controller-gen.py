@@ -39,10 +39,6 @@ for i in stateLines:
 controls = []	
 for i in controlLines:
 	controls.append(i.rstrip().split(','))
-	
-opcodes = []	
-for i in opLines:
-	opcodes.append(i.rstrip().split(','))
 
 # First write header info
 outfile.write("module controller(clk, IR, N, Z, P")
@@ -56,6 +52,10 @@ while i<len(controls[0]):
 	outfile.write(", "+controls[0][i])
 	controlSignals.append(controls[0][i])
 	i=i+1
+	
+	if(i==len(controls[0])):
+		controlSignalLengths.append(0)
+		break
 	
 	# Increment i till you get a non-zero length
 	length = 0
@@ -95,6 +95,8 @@ else:
 # Start switch-case
 outfile.write("\t\tcase("+controls[0][1]+")\n")
 
+opid = 0
+stateid = 1
 for state in range(1, len(controls)):
 	outfile.write("\t\t\t"+str(state)+": begin\n")
 	signalNo = 2
@@ -116,10 +118,7 @@ for state in range(1, len(controls)):
 			signalNo = signalNo+1
 			signalNoHere = signalNoHere-1
 		outfile.write(";\n")
-	
-	# Calculate next state here.
-	nextState = 0
-	outfile.write("\t\t\t\tStateID = "+str(nextState)+";\n")
+
 	outfile.write("\t\t\tend\n")
 
 outfile.write("\t\tendcase\n")

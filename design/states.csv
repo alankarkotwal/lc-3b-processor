@@ -1,9 +1,9 @@
-ALUOP,fetch1,fetch2,op1,op2,op3,,,,,
-BR,fetch1,fetch2,br1,,,,,,,
-JMP / RET,fetch1,fetch2,jmp1,,,,,,,
-JSR,fetch1,fetch2,op1,jsr1,jsr2,,,,,
-LDB,fetch1,fetch2,op1,ldb1,ldb2,ldb3,,,,
-LDW,fetch1,fetch2,op1,ldw1,ldw2,ldw3,ldw4,ldw5,ldw6,ldw7
-LEA,fetch1,fetch2,op1,lea1,lea2,,,,,
-STB,fetch1,fetch2,op1,stb1,stb2,,,,,
-STW,fetch1,fetch2,op1,stw1,stw2,stw3,stw4,stw5,,
+OP,fetch1,op1,op2,op3,,,,,
+BR,fetch1,br1,,,,,,,
+JMP,fetch1,jmp1,,,,,,,
+JSR,fetch1,op1,jsr1,jsr2,,,,,
+LDB,fetch1,op1,ldb1,ldb2,ldb3,,,,
+LDW,fetch1,op1,ldw1,ldw2,ldw3,ldw4,ldw5,ldw6,ldw7
+LEA,fetch1,op1,lea1,lea2,,,,,
+STB,fetch1,op1,stb1,stb2,,,,,
+STW,fetch1,op1,stw1,stw2,stw3,stw4,stw5,,
