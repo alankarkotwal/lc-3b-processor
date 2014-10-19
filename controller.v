@@ -375,6 +375,7 @@ module controller(clk, IR, N, Z, P, StateID, Mux1, Mux2, Mux3, Mux4, Mux5, Mux6,
 	
 	always@(posedge clk) begin
 		case(StateID)
+			0: StateID=1;
 			1: begin
 				case(IR[15:12])
 					0:  StateID=5;
@@ -418,10 +419,6 @@ module controller(clk, IR, N, Z, P, StateID, Mux1, Mux2, Mux3, Mux4, Mux5, Mux6,
 			18: StateID=17;
 			default: StateID=1;
 		endcase
-	end
-	
-	initial begin
-		StateID = 1;
 	end
 
 endmodule
