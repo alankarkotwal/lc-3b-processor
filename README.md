@@ -1,4 +1,4 @@
-lc-3b-processor
+Lc-3b-Processor
 ===============
 
 Verilog Design for a good 16-bit RISC Processor using the LC-3B ISA  
